@@ -1,0 +1,122 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Melissa</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #ffd6ec;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    .heart {
+      width: 200px;
+      height: 180px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      background: red;
+      animation: pulse 2s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      width: 200px;
+      height: 180px;
+      position: absolute;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -100px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 100px;
+      top: 0;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1) rotate(-45deg); }
+      50% { transform: scale(1.05) rotate(-45deg); }
+      100% { transform: scale(1) rotate(-45deg); }
+    }
+
+    .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      font-size: 24px;
+      width: 200px;
+      z-index: 2;
+    }
+
+    .bg-heart {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: pink;
+      border-radius: 50%;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .corner {
+      position: absolute;
+      width: 100px;
+    }
+
+    .swimmer {
+      bottom: 20px;
+      left: 20px;
+    }
+
+    .lily {
+      bottom: 20px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart"></div>
+  <div class="message">Happy 19th Birthday Melissa</div>
+
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Swimming_girl_cartoon.svg/1024px-Swimming_girl_cartoon.svg.png" class="corner swimmer">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Lycoris_radiata_001.jpg" class="corner lily">
+
+  <script>
+    // create floating hearts
+    for (let i = 0; i < 50; i++) {
+      let heart = document.createElement("div");
+      heart.className = "bg-heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
+      heart.style.width = heart.style.height = Math.random() * 10 + 5 + "px";
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
